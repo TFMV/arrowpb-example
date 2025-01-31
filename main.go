@@ -1,8 +1,3 @@
-# arrowpb-example
-
-Demonstrates how to use arrowpb to convert Apache Arrow Record Batches to Protocol Buffers.
-
-```go
 package main
 
 import (
@@ -45,8 +40,9 @@ func main() {
 	// Create a RecordReader from the Record
 	reader, err := array.NewRecordReader(schema, []arrow.Record{record})
 	if err != nil {
-		log.Fatalf("Failed to create RecordReader: %v", err)
+		log.Fatalf("Failed to recreate RecordReader: %v", err)
 	}
+
 	defer reader.Release()
 
 	// Convert Arrow schema to ProtoBuf descriptor
@@ -76,5 +72,3 @@ func main() {
 	}
 	fmt.Println("\nArrow Record as JSON:\n", jsonBuffer.String())
 }
-
-```
